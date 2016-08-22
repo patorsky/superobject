@@ -108,12 +108,12 @@ function LocalSuperTimeZone: TSuperTimeZone;
 { Windows 2000+ }
 function _SystemTimeToTzSpecificLocalTime(
   lpTimeZoneInformation: PTimeZoneInformation;
-  var lpUniversalTime, lpLocalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'SystemTimeToTzSpecificLocalTime' {$IFDEF HAVE_DELAYED}delayed;{$ENDIF}
+  var lpUniversalTime, lpLocalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'SystemTimeToTzSpecificLocalTime' {$IFDEF HAVE_DELAYED}delayed{$ENDIF};
 
 { Windows XP+ }
 function _TzSpecificLocalTimeToSystemTime(
   lpTimeZoneInformation: PTimeZoneInformation;
-  var lpLocalTime, lpUniversalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'TzSpecificLocalTimeToSystemTime' {$IFDEF HAVE_DELAYED}delayed;{$ENDIF}
+  var lpLocalTime, lpUniversalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'TzSpecificLocalTimeToSystemTime' {$IFDEF HAVE_DELAYED}delayed{$ENDIF};
 
 (* EXtended version - DST Aware *)
 
@@ -137,18 +137,18 @@ type
   {$EXTERNALSYM _TIME_DYNAMIC_ZONE_INFORMATION}
 
 function GetDynamicTimeZoneInformation(var pTimeZoneInformation: TDynamicTimeZoneInformation): DWORD;
-  stdcall; external kernel32 name 'GetDynamicTimeZoneInformation' {$IFDEF HAVE_DELAYED}delayed;{$ENDIF}
+  stdcall; external kernel32 name 'GetDynamicTimeZoneInformation' {$IFDEF HAVE_DELAYED}delayed{$ENDIF};
 {$IFEND}
 
 { Windows 7+ }
 function _TzSpecificLocalTimeToSystemTimeEx(
   const lpTimeZoneInformation: PDynamicTimeZoneInformation;
-  const lpLocalTime: PSystemTime; var lpUniversalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'TzSpecificLocalTimeToSystemTimeEx' {$IFDEF HAVE_DELAYED}delayed;{$ENDIF}
+  const lpLocalTime: PSystemTime; var lpUniversalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'TzSpecificLocalTimeToSystemTimeEx' {$IFDEF HAVE_DELAYED}delayed{$ENDIF};
 
 { Windows 7+ }
 function _SystemTimeToTzSpecificLocalTimeEx(
   const lpTimeZoneInformation: PDynamicTimeZoneInformation;
-   const lpUniversalTime: PSystemTime; var lpLocalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'SystemTimeToTzSpecificLocalTimeEx' {$IFDEF HAVE_DELAYED}delayed;{$ENDIF}
+   const lpUniversalTime: PSystemTime; var lpLocalTime: TSystemTime): BOOL; stdcall; external kernel32 name 'SystemTimeToTzSpecificLocalTimeEx' {$IFDEF HAVE_DELAYED}delayed{$ENDIF};
 
 { Convert Local <=> UTC for specific time-zones using the Windows API only. NOT Guaranteed to work }
 
